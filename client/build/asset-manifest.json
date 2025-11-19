@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/seminar/static/css/main.3bbb0fd1.css",
+    "main.js": "/seminar/static/js/main.25011bc2.js",
+    "static/media/Logo_transparent.png": "/seminar/static/media/Logo_transparent.7071e700ad85bb4f0710.png",
+    "static/media/Footer_BG.png": "/seminar/static/media/Footer_BG.2731e1b77f7ed89c087c.png",
+    "static/media/Header_BG.png": "/seminar/static/media/Header_BG.6196ec6079c1185a9b2a.png",
+    "index.html": "/seminar/index.html",
+    "main.3bbb0fd1.css.map": "/seminar/static/css/main.3bbb0fd1.css.map",
+    "main.25011bc2.js.map": "/seminar/static/js/main.25011bc2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3bbb0fd1.css",
+    "static/js/main.25011bc2.js"
+  ]
+}
