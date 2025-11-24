@@ -29,11 +29,12 @@ PDF プレビューやテキストのハイライト表示にも対応してい�
 ## Technologies  
 
 ### Frontend
-- React  
-- react-router-dom  
-- react-syntax-highlighter  
+- HTML
+- CSS
+- React
 
 ### Backend
+- JavaScript
 - Node.js / Express  
 - MongoDB  
 
