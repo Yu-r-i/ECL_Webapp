@@ -22,24 +22,7 @@ PDF プレビューやテキストのハイライト表示にも対応してい�
 - Express API によるファイル情報の提供  
 - React によるインタラクティブなフロントエンド  
 - Docker（nginx / node / mongo）による統合動作環境  
-- Python スクリプトで数万件のファイル情報を自動登録  
-
----
-
-## Architecture  
-|             Nginx (8080)      | 
-|  - Serves static pages        |
-|  - Reverse proxy to /api      |
-|
-v
-|        Express API (4000)     |
-|  - Serves /api/files          |
-|  - Connects MongoDB           |
-|
-v
-|           MongoDB (27017)     |
-|  - Stores files metadata      |
-|  - Directory hierarchy info   |
+- Python スクリプトで数万件のファイル情報を自動登録
 
 ---
 
