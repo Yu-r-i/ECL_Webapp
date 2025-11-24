@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# ECL Web Archive System  
+研究室内のレポート・卒業研究を階層管理し、ブラウザから閲覧できるアーカイブ管理システム
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## Overview  
+本プロジェクトは、研究室内に蓄積された PDF / Markdown / テキスト資料を  
+ディレクトリ構造を保持したまま Web 上で検索・閲覧できるアーカイブ管理システムです。
 
-In the project directory, you can run:
+従来は NAS に散在していた資料を整理し、  
+年度 → 学籍番号 → サブディレクトリ → ファイル という構造でブラウザに表示します。  
+PDF プレビューやテキストのハイライト表示にも対応しています。
 
-### `npm start`
+研究室内サーバー（オンプレ環境）で動作する前提で設計されています。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features  
+- 年度・学生ごとのディレクトリ構造をそのまま表示（Finder風 UI）  
+- PDF・画像・テキストファイルのブラウザ上でのプレビュー  
+- MongoDB による柔軟なメタデータ管理  
+- Express API によるファイル情報の提供  
+- React によるインタラクティブなフロントエンド  
+- Docker（nginx / node / mongo）による統合動作環境  
+- Python スクリプトで数万件のファイル情報を自動登録  
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Architecture  
+|             Nginx (8080)      | 
+|  - Serves static pages        |
+|  - Reverse proxy to /api      |
+|
+v
+|        Express API (4000)     |
+|  - Serves /api/files          |
+|  - Connects MongoDB           |
+|
+v
+|           MongoDB (27017)     |
+|  - Stores files metadata      |
+|  - Directory hierarchy info   |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend
+- React  
+- react-router-dom  
+- react-syntax-highlighter  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend
+- Node.js / Express  
+- MongoDB  
 
-### `npm run eject`
+### Infrastructure
+- Docker（nginx / node / mongo）  
+- Python（メタ情報抽出スクリプト）
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup (Docker)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Build & Run
+~~~bash
+docker-compose up --build -d
+~~~
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. Access
+- Web App: http://localhost:8080/seminar/
+- API Endpoint: http://localhost:8080/api/files
+- MongoDB: mongodb://localhost:27017
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Author
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+近畿大学 情報学部 情報学科
+サイバーセキュリティコース
+電子商取引研究室（ECL）
+舩戸 雄吏（Funato Yuri）
